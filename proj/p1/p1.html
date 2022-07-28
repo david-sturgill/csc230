@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>CSC230 Project 1</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<h1 id="csc230-project-1">CSC230 Project 1</h1>
+<p>This is your first, easy project. The others will be larger and more interesting. This one will let you get started writing, formatting, compiling, running and testing simple C programs. This requires that you familiarize yourself with the <a href="https://www.csc2.ncsu.edu/courses/csc230/CommonPlatform.pdf">Common Platform</a> and our <a href="https://www.csc2.ncsu.edu/courses/csc230/coding_style.html">Coding Style Guidelines</a>. A full list of the relevant <a href="#outcomes">Learning Outcomes</a> is included at the end of this page.</p>
+<p>This project is to be done individually. You should be able to solve these problems using the material up to the end of the Lecture 2 slides. Please don’t go find other resources for implementing your solution. Solving these problems with material from just the first two lectures should let you start on your code early, and it will give you a chance to practice using basic C features for things like I/O.</p>
+<h2 id="getting-started">Getting Started</h2>
+<p>There is a starter file for this project, <a href="starter1.tgz">starter1.tgz</a>. This file is a compressed tar archive containing several files you’ll need. You’ll need to unpack the files inside to get started. There are a couple of ways you can do this.</p>
+<ul>
+<li>If you’d like, you can download the starter using a web browser on your local system, using the link above. Then use an sftp client or a tool like ExpanDrive to copy the archive to a location in your AFS space where you want to work on this assignment. For work on this project, I’d suggest making a directory for CSC 230 projects, then make a subdirectory under it for project 1. Log in on a common platform machine, change directories to the path where you plan to work and then unpack the archive using a command like the following:</li>
+</ul>
+<pre><code>$ tar xzvf starter1.tgz</code></pre>
+<ul>
+<li>Or, if you’re already logged in on a common platform system, you can download the starter using curl instead of a web browser. Make a directory where you’d like to work on the project, and <strong>cd</strong> to that directory. Then, you can download and unpack the starter right in that directory. The following commands should do the job:</li>
+</ul>
+<pre><code>$ curl -O https://www.csc2.ncsu.edu/courses/csc230/proj/p1/starter1.tgz
+$ tar xzvf starter1.tgz</code></pre>
+<p>In general, when we grade your programs, we expect them to behave exactly as described in the assignment. This includes producing the right output with the right spacing and line termination. The project 1 starter includes some input files and expected output files to help you make sure your programs are behaving correctly. As described below, you can capture your program’s output in a file and then use the <code>diff</code> command to compare the output you got with the output we were expecting you to get. If <code>diff</code> sees any differences, even in spacing or line termination, it will tell you where they are. There’s a little guide linked from the course home page explaining <a href="https://www.csc2.ncsu.edu/courses/csc230/guide/diff.pdf">how to use diff</a> and how to read its output.</p>
+<h1 id="part-0-registering-with-ncsu-github-a-very-easy-10-pts">Part 0 : Registering with NCSU GitHub (a very easy 10 pts)</h1>
+<p>Using a web browser, visit <a href="http://github.ncsu.edu">github.ncsu.edu</a> and log in with your unity credentials. If you’re not able to log in on this website, inform the instructor immediately (i.e., <strong>before</strong> the deadline).</p>
+<p>We’ll be using NCSU’s GitHub for submitting future projects. This is an opt-in system, which means that the initial login is required so that you are recognized as a user. If you are not in the system, we won’t be able to create the repository that you will be using for the rest of the course, and you won’t be able to complete future projects.</p>
+<p>Maybe you’ve used git and github before. That’s great, but keep in mind that you’ll need to use your assigned repo, hosted on NC State’s GitHub for future projects.</p>
+<h2 id="grading">Grading</h2>
+<p>You’ll get your 10 points just for logging in on the NCSU github. This is a really easy 10 points to earn. There is nothing to turn in for this part of the assignment. If you run into trouble logging in, be sure to let us know before the deadline, so we can try to help you out.</p>
+<h1 id="part-1-correcting-style-25-pts">Part 1 : Correcting Style (25 pts)</h1>
+<p>The program, <a href="style.c">style.c</a> is an example of some bad style. It has everything, bad or missing comments, bad curly bracket placement, some hard tabs for indentation, some incorrect line termination, no line termination at the end of the last line, maybe more problems. Edit this program to make it consistent with the <a href="https://www.csc2.ncsu.edu/courses/csc230/coding_style.html">class style guidelines</a>.</p>
+<p>The style guide requires particular types of block comments before each function and at the top of each file. After reformatting the program, add these comments. You may need to read the code for the various functions so your comments can summarize what they each do. You’ll also find some opportunities to make sure the program uses meaningfully-named constants instead of some magic numbers.</p>
+<h2 id="editing-style.c">Editing style.c</h2>
+<p>To edit the <code>style.c</code> source file, you can use a text editor or the IDE of your choice. Most of the style errors will be easy to see by just looking at the source file and consulting the class style guide document. Some style errors are in the whitespace of the source file (spaces or line termination). These may be more difficult to see in your editor. To check these, you may want to use the <code>hexdump</code> program. If you run it like the following, it will show the sequence of characters in the source file, in hexadecimal on the left and as symbols on the right. This will let you see exactly what caracters are in your source file by looking at the sequence of hexadecimal codes on the left.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1">$ <span class="fu">hexdump</span> -C style.c</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="ex">00000000</span>  23 69 6e 63 6c 75 64 65  20 3c 73 74 64 69 6f 2e  <span class="kw">|</span>#<span class="ex">include</span> <span class="op">&lt;</span>stdio.<span class="kw">|</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="ex">00000010</span>  68 3e 0a 23 69 6e 63 6c  75 64 65 20 3c 73 74 64  <span class="kw">|</span><span class="ex">h</span><span class="op">&gt;</span>.#include <span class="op">&lt;</span>std<span class="kw">|</span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="ex">00000020</span>  6c 69 62 2e 68 3e 0a 0a  23 64 65 66 69 6e 65 20  <span class="kw">|</span><span class="ex">lib.h</span><span class="op">&gt;</span>..#define <span class="kw">|</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="ex">00000030</span>  53 45 56 45 4e 54 59 20  37 32 0a 0a 76 6f 69 64  <span class="kw">|</span><span class="ex">SEVENTY</span> 72..void<span class="kw">|</span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="ex">00000040</span>  20 70 72 69 6e 74 57 6f  72 64 28 20 69 6e 74 20  <span class="kw">|</span> <span class="ex">printWord</span>( int <span class="kw">|</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="ex">00000050</span>  78 20 29 0a 7b 0a 20 20  20 20 66 6f 72 20 28 20  <span class="kw">|</span><span class="ex">x</span> )<span class="ex">.</span>{.    for ( <span class="kw">|</span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="ex">00000060</span>  69 6e 74 20 69 20 3d 20  30 3b 20 69 20 3c 20 78  <span class="kw">|</span><span class="ex">int</span> i = 0<span class="kw">;</span> <span class="ex">i</span> <span class="op">&lt;</span> x<span class="kw">|</span></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="ex">00000070</span>  3b 20 69 2b 2b 20 29 0a  20 20 20 20 7b 0a 20 20  <span class="kw">|</span>; <span class="ex">i++</span> )<span class="bu">.</span>    {<span class="bu">.</span>  <span class="kw">|</span></a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="ex">00000080</span>  20 20 20 20 20 20 20 20  20 20 2f 2f 20 50 72 69  <span class="kw">|</span>          <span class="ex">//</span> Pri<span class="kw">|</span></a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="ex">00000090</span>  6e 74 20 61 20 72 61 6e  64 6f 6d 20 6c 6f 77 65  <span class="kw">|</span><span class="ex">nt</span> a random lowe<span class="kw">|</span></a>
+<a class="sourceLine" id="cb3-12" title="12"><span class="ex">000000a0</span>  72 2d 63 61 73 65 20 6c  65 74 74 65 72 2e 0a 20  <span class="kw">|</span><span class="ex">r-case</span> letter.. <span class="kw">|</span></a>
+<a class="sourceLine" id="cb3-13" title="13"><span class="ex">000000b0</span>  20 20 20 20 20 20 20 20  20 20 20 70 72 69 6e 74  <span class="kw">|</span>           <span class="ex">print</span><span class="kw">|</span></a>
+<a class="sourceLine" id="cb3-14" title="14"><span class="ex">000000c0</span>  66 28 20 22 25 63 22 2c  20 39 37 20 2b 20 72 61  <span class="kw">|</span><span class="ex">f</span>( <span class="st">&quot;%c&quot;</span>, 97 + ra<span class="kw">|</span></a>
+<a class="sourceLine" id="cb3-15" title="15"><span class="ex">000000d0</span>  6e 64 28 29 20 25 20 32  36 20 29 3b 0a 20 20 20  <span class="kw">|</span><span class="fu">nd()</span> <span class="ex">%</span> 26 );<span class="bu">.</span>   <span class="kw">|</span></a>
+<a class="sourceLine" id="cb3-16" title="16"><span class="ex">000000e0</span>  20 7d 0a 7d 0a 0a 69 6e  74 20 70 72 69 6e 74 4c  <span class="kw">|</span> }<span class="ex">.</span>}<span class="ex">..int</span> printL<span class="kw">|</span></a>
+<a class="sourceLine" id="cb3-17" title="17"><span class="ex">000000f0</span>  69 6e 65 28 29 20 7b 0a  09 69 6e 74 20 63 6f 75  <span class="kw">|</span><span class="fu">ine()</span> {<span class="ex">..int</span> cou<span class="kw">|</span></a>
+<a class="sourceLine" id="cb3-18" title="18"><span class="ex">00000100</span>  6e 74 20 3d 20 30 2c 20  70 6f 73 20 3d 20 30 2c  <span class="kw">|</span><span class="ex">nt</span> = 0, pos = 0,<span class="kw">|</span></a>
+<a class="sourceLine" id="cb3-19" title="19"><span class="ex">00000110</span>  20 73 70 61 63 65 20 3d  20 30 3b 0a 09 69 6e 74  <span class="kw">|</span> <span class="ex">space</span> = 0<span class="kw">;</span><span class="ex">..int</span><span class="kw">|</span></a>
+<a class="sourceLine" id="cb3-20" title="20"><span class="ex">...</span> more hexdump output omitted ...</a></code></pre></div>
+<p>The example above shows the start of the hexdump output for the <code>style.c</code> file from the starter, before any corrections have been made. Down near the bottom, you can see a problem with the file, the characters with a hexadecimal code of 09. These are hard tab characters used for indentation in a few places. The style guide says we shouldn’t use hard tabs for indentation, so you’ll want to replace these with an appropriate number of spaces using your text editor.</p>
+<p>There are also some places in the <code>style.c</code> file where Windows-style line termination is used at the end of a line. These will show up as a two-character sequence, 0d 0a, in the hexdump output. You’ll want to replace these with with Unix-style line termination, just a newline character, 0a. If you have trouble making this correction in your editor, you may want to try the <code>dos2unix</code> command installed on the common platform systems. It can change the type of line termination used everywhere in a text file.</p>
+<h2 id="program-execution">Program execution</h2>
+<p>When your <code>style.c</code> program runs (even before you correct the style), it should exit with a successful exit status and produce the following output. The starter also includes a expected-style.txt file you can use to make sure your style-corrected program produces exactly the output we’re expecting (a randomly-generated paragraph of text).</p>
+<pre><code>wlrb mqbhcd r owkk hiddqsc xrjm wfr sjyb dbef arcbynecd ggx pklore
+nmpa qfwkho kmcoqhnw kuewhsqmgb uqcljj vsw dkqtbxi mvtrrbljpt snfwzqfj
+fadrrwsof b nuvqhff saqxwpqcac hchzv rkmlno jkpqpx jxkitzyx cbhhkic
+oendtomfg wdwf gpxiq kuytdlcgde htaciohor tq vwcsgspqo msb agu nny
+nz gd wpbtr blnsade guumoqc rubetoky hoachwdvmx rdryxl n qtukwa mleju
+wci xubume meya drmydiajxl ghiqfmz lvihjo vsuyoyp yul eim otehzri c
+kpggkbb p zrzu xamludf kgruowz i oobpple lwphapjna qhdcnvwdtx bmyppp
+uxnspusgd iixqmbfjxj v djsuyib ebmws q oygyxym evypzvje ebeocfu
+sxdixtigsi ehkch dflilrjq nxzt rsvbspkyh enbppkqtp dbuotbbqcw vrf ju jd
+tg iqvdg ijvwcya bwewpjvyg hljxepb iwuqzdzu du zv fspqp wuz f ovydd
+Words: 103</code></pre>
+<p>This program’s output depends on the random number generator. If you run it on a system that’s not a common platform machine, you may get a different sequence of random numbers, so your output may not match the expected output. Be sure to check it on a real common platform system to make sure you’re getting the output we expect. Your style corrections shouldn’t change the program behavior, but checking the output is a good way to make sure you didn’t modify the program’s behavior accidentally.</p>
+<h2 id="style.c-grading">style.c Grading</h2>
+<p>For this part of the assignment, you’ll be submitting your modified source file, <code>style.c</code>, to the Project 1 assignment in Moodle. Your submission will be graded according to the following:</p>
+<ul>
+<li>Adding the required block comments: 10 points</li>
+<li>Correcting source code formatting and other style problems: 10 points</li>
+<li>Program still compiles cleanly and produces the right output: 5 points</li>
+</ul>
+<h1 id="part-2-text-box-25-pts">Part 2 : Text Box (25 pts)</h1>
+<p>Have a look at the <a href="textbox.c">textbox.c</a> source file. This program is intended to give you a chance to try reading input character-by-character using getchar() and printing characters using putchar(). The overall skeleton of this program is done for you, but you’ll need to fill in the bodies of the functions to get it working.</p>
+<p>The job of this program is to print text from standard input, but with a border around the text. The figure below shows how it’s supposed to work.</p>
+<figure>
+<img src="textbox.png" alt="Figure: job of the textbox.c program, wrapping a border around input text." /><figcaption>Figure: job of the textbox.c program, wrapping a border around input text.</figcaption>
+</figure>
+<p>The border drawn around the text is a fixed-width, and made from a chosen character. It should be tall enough to contain every line read from standard input. Both the box width and the character it’s made of are specified via preprocessor constants, so it would be easy to change them and then re-compile the program. We’ll use a border that’s made of asterisks and contains lines of 60 characters (so, a lot wider than the figure above shows). This width value is the length of each line of text <em>inside</em> the border. With a border character at the start and end of each output line, these will actually be two characters longer. So, by default, output lines will all be 62 characters, with 60 characters in between he first and last character of the border.</p>
+<p>Input lines may not all be exactly the right length; probably, many of them will be shorter than 60 characters or longer. We don’t know how to work with strings yet, so we’ll have to work character-by-character. As you’re reading the input and printing the output, you’ll need to count the characters on the current line. For lines that are shorter than 60 characters, you’ll need to print some extra spaces at the end, to get the output length up to 60 characters. For input lines that are too long, you’ll need to read and print the first 60 characters. After that, you’ll still need to read the rest of the characters up to the end of the line, but you won’t want to print more than the first 60 characters to the output.</p>
+<h2 id="design-and-implementation">Design and Implementation</h2>
+<p>Your program will define and use the following three functions. You can have more if you want, but we’ll be looking for at least these three.</p>
+<ul>
+<li><p><code>void lineOfChars( char ch, int count )</code><br />
+This function prints out multiple copies of the given character, followed by a newline. The number of copies is determined by the count parameter. Use this function to help print the top and bottom border around the text.</p></li>
+<li><p><code>bool paddedLine()</code><br />
+This function will read and print <em>a single line of text</em> inside the border. Your main function will call this over and over, once for each line of input. The function returns true or false to tell the caller if there was another input line to process. If it successfully reads (and prints) an input line, it should return true. Otherwise (i.e., it hits EOF before it can read any characters), it should return false to tell the caller that there’s no more text to put in the box. This function will read the text from standard input and print to standard output. If the line of text isn’t long enough, it will add extra spaces at the end to make the box rectangular. If a line of text is too long, it will discard extra characters on the line (i.e., up to the end-of-line) to keep the box rectangular.</p>
+<p>We don’t know how to store strings yet, so this function will need to work by reading in and handling just one character at a time. You can do this by keeping up with how many characters you’ve read in for the current line and deciding what to do with each character as you read it. Remember, each time the paddedLine() function is called, it should read in a whole line of characters, but it may not be able to print all those characters and it may have to print some extra characters. If the line is shorter than the width of the box, it will need to print some extra characters at the end. If the line is longer than the width of the box, the function will still need to read the whole line; it just won’t print any of the characters out past the end of the box.</p>
+<p>This function is probably the most fun/tricky part of this assignment. The test cases provided with the starter will help you try out your function’s behavior and make sure it’s doing the right thing in all situations. When printing out a line in the middle part of the text box, you can either make main() responsible for printing the border characters at the start and the end, or you can make this function handle it, whichever seems easier to you.</p></li>
+<li><p><code>int main()</code><br />
+This is, of course, the starting point of your program. It will use the other two functions to print the text from standard input with a border around it.</p></li>
+</ul>
+<p>Be sure to fill in the empty block comments in this program according to the style guide. Remember, a file comment has a short summary of the file/program, along with a file and an author tag. A block comment on a function needs a short summary of what the function does, along with param tags for any parameters the function takes, and return tag if it’s not a void function.</p>
+<h2 id="testing">Testing</h2>
+<p>Compile your program using the following command.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1">$ <span class="fu">gcc</span> -Wall -std=c99 textbox.c -o textbox</a></code></pre></div>
+<p>You can run the program and type input to it yourself, but the output will look a lot better if you use redirection to read input from a file. If you just want to see what your program’s output looks like, you can run it like:</p>
+<pre><code>$ ./textbox &lt; input-text-1.txt</code></pre>
+<p>If you really want to make sure your output is right, you can capture the output in file and compare it against one of our expected output examples. Try running your program as follows to tell it to read input from our first test case (input-text-1.txt) and send output to a file named <code>output.txt</code>. Then, check your programs exit status to make sure it reported successful execution, and use diff to help make sure it produced output that matches what we were expecting.</p>
+<pre><code>$ ./textbox &lt; input-text-1.txt &gt;| output.txt
+$ echo $?
+0
+$ diff output.txt expected-text-1.txt</code></pre>
+<p>You can use similar commands to test your program against each of the four test cases we’re providing. Here’s what they each do:</p>
+<ol type="1">
+<li><p>This test input contains five lines, each one 60 characters long, exactly long enough to fill a line of the box. It should be easy.</p></li>
+<li><p>This test has lines that are all shorter than the box width, so they’ll all have to be padded with extra spaces at the end to make the box the right width.</p></li>
+<li><p>This test has some lines that are too long, so the extra characters at the end will have to be discarded as the line is processed.</p></li>
+<li><p>This test contains a few lines of text, some that have to be padded with spaces and some (one) that has to be truncated.</p></li>
+</ol>
+<p>Remember, you need check the exit status right after you run your program. If you get an exit status of zero and diff doesn’t report any differences between the expected output and the actual output you got, then it looks like your program is behaving correctly. If diff notices any differences, it will report the line number where there’s a discrepancy, along with the contents of the lines that don’t match. If you have trouble interpreting the output of diff, you can try out the <code>sdiff</code> command. This works like diff, but it will display the expected and actual output files side by side, and may make it easier to see inconsistencies between the files. To use sdiff, just replace <code>diff</code> with <code>sdiff</code> in the shell code above.</p>
+<h2 id="textbox.c-grading">textbox.c Grading</h2>
+<p>For this part of the assignment, you’ll be submitting your modified source file, <code>textbox.c</code> to the Project 1 assignment in Moodle. Your edits to <code>textbox.c</code> will be graded according to the following:</p>
+<ul>
+<li>Compiling cleanly: <strong>5 points</strong></li>
+<li>Producing the right output during execution: <strong>15 points</strong></li>
+<li>Following the style guidelines: <strong>5 points</strong><br />
+This includes commenting, consistent indentation (you can change the indentation from the starter code, if you want), curly bracket placement, etc.</li>
+<li>Following the design <strong>Up to 20 percent deduction</strong><br />
+This includes implementing and using the functions described above and preprocessor constants, no global variables.</li>
+<li>Late submission <strong>20 percent deduction</strong></li>
+</ul>
+<h1 id="part-3-trigonometric-function-calculation">Part 3 : Trigonometric Function Calculation</h1>
+<p>C has a math library, containing functions for things like square roots, logarithms and trigonometry. We’ll learn about this library soon. For this part of the project, we’ll try out a way to compute the trigonometric functions yourself, without using the math library.</p>
+<p>Our program will be called <code>trig.c</code>. When run, it will read an angle, <em>x</em>, from the user as a double value. Then, it will print out a table of successively more accurate approximations of the sine of <em>x</em>, the cosine of <em>x</em> and the tangent of <em>x</em>. The following shows a sample execution of our program. The first line shows the user running the program at the shell prompt. Then, the user enters 1.75 as the input angle. Then, the program prints out a table giving better and better approximations. It stops when the result seems accurate enough. For this example, it takes 14 iterations.</p>
+<pre>
+$ <b>./trig</b>
+<b>1.75</b>
+terms |         sin |         cos |         tan 
+------+-------------+-------------+-------------
+    1 |   0.0000000 |   1.0000000 |   0.0000000
+    2 |   1.7500000 |   1.0000000 |   1.7500000
+    3 |   1.7500000 |  -0.5312500 |  -3.2941176
+    4 |   0.8567708 |  -0.5312500 |  -1.6127451
+    5 |   0.8567708 |  -0.1404622 |  -6.0996524
+    6 |   0.9935465 |  -0.1404622 |  -7.0734067
+    7 |   0.9935465 |  -0.1803552 |  -5.5088336
+    8 |   0.9835733 |  -0.1803552 |  -5.4535359
+    9 |   0.9835733 |  -0.1781735 |  -5.5203117
+   10 |   0.9839975 |  -0.1781735 |  -5.5226925
+   11 |   0.9839975 |  -0.1782477 |  -5.5203924
+   12 |   0.9839857 |  -0.1782477 |  -5.5203262
+   13 |   0.9839857 |  -0.1782460 |  -5.5203795
+   14 |   0.9839860 |  -0.1782460 |  -5.5203808
+</pre>
+<h2 id="user-input">User Input</h2>
+<p>Our program expects the user to enter an angle in radians as input. It doesn’t print out a prompt; the user is just expected to know what to do after they run the program. If the user enters a value that can’t be parsed as a double, or if they enter something larger than <var>π</var> or smaller than <var>-π</var>, the program will print a line with the following error message (printed to the terminal, standard output) and then exit with an exit status of 1.</p>
+<pre><code>Invalid input</code></pre>
+<h2 id="approximating-sine-and-cosine">Approximating Sine and Cosine</h2>
+<p>Our program will use the Taylor series to compute our approximation of sine and cosine. You probably remember the Taylor series from calculus class. It lets us compute the value of a function at any point, <em>x</em>, as long as we know the value of the function at a nearby point <em>a</em> and we know first, second, third, … derivatives of the function at <em>a</em>. There’s a <a href="https://en.wikipedia.org/wiki/Taylor_series">wikipedia page</a> if you’d like a more detailed reminder.</p>
+<p>The following shows the Taylor series for a point, <em>x</em>, based on the value and derivatives of f() at some nearby point, <em>a</em>. The first term of the series is just the value of f() at <em>a</em>. The next term is the derivative of f() at <em>a</em> times (x - a) divided by one factorial. Successive terms are similar. They use successive derivatives of f() (i.e., the second derivative, the third derivative and so on), they use successive powers of (x - a) and they use successive factorials in the denominator.</p>
+<figure>
+<img src="generic-taylor.png" alt="Figure: Taylor series for f(x) based on the value and derivatives of f() at a nearby point, a." /><figcaption>Figure: Taylor series for f(x) based on the value and derivatives of f() at a nearby point, a.</figcaption>
+</figure>
+<p>We can simplify the Taylor series a little bit if we use zero for <em>a</em>. The following shows the series after this simplification. This is how we’ll use the Taylor series for this program.</p>
+<figure>
+<img src="generic-zero.png" alt="Figure: Simplified Taylor series for f(x) based on the value and derivatives of f() at zero." /><figcaption>Figure: Simplified Taylor series for f(x) based on the value and derivatives of f() at zero.</figcaption>
+</figure>
+<p>If we use the notation f<sup>(i)</sup>( 0 ) to represent the ith derivative of f(), then we can write the Taylor series using summation. To compute an approximation, we’ll just use the first few terms in this infinite series.</p>
+<figure>
+<img src="sum-taylor.png" alt="Figure: Taylor series as an infinite sum" /><figcaption>Figure: Taylor series as an infinite sum</figcaption>
+</figure>
+<p>This series works out very nicely when we’re using it to compute sine and cosine. The table below shows the value of sin(a) at a = 0 and its successive derivatives. The value of sin( 0 ) is zero. You may remember that the first derivative of sin() is the cosine function, so the first derivative of sin(a) at a = 0 is 1 (that’s the value of cos( 0 ) ). The second derivative of sin() is -sin(), so the value of the second derivative of sin(a) at a = 0 is 0. The third derivative of sin() is -cos(), so the value of the third derivative of sin(a) at a = 0 is -1. The fourth derivative of sin() is just sin(), so the derivatives of sin() form a cycle that goes like: sin() → cos() → -sin() → -cos() → sin()</p>
+<table border="1">
+<tr>
+<th>
+derivative of f()
+</th>
+<th>
+for f(a) = sin(a)
+</th>
+<th>
+value at a = 0
+</th>
+</tr>
+<tr>
+<td>
+f(a)
+</td>
+<td>
+sin(a)
+</td>
+<td>
+0
+</td>
+</tr>
+<tr>
+<td>
+f<sup>(1)</sup>(a)
+</td>
+<td>
+cos(a)
+</td>
+<td>
+1
+</td>
+</tr>
+<tr>
+<td>
+f<sup>(2)</sup>(a)
+</td>
+<td>
+-sin(a)
+</td>
+<td>
+0
+</td>
+</tr>
+<tr>
+<td>
+f<sup>(3)</sup>(a)
+</td>
+<td>
+-cos(a)
+</td>
+<td>
+-1
+</td>
+</tr>
+<tr>
+<td>
+f<sup>(4)</sup>(a)
+</td>
+<td>
+sin(a)
+</td>
+<td>
+0
+</td>
+</tr>
+<tr>
+<td>
+f<sup>(5)</sup>(a)
+</td>
+<td>
+cos(a)
+</td>
+<td>
+1
+</td>
+</tr>
+</table>
+<p>If we fill in these values to get the taylor series for sin(), we get the following. You can see that half the terms have a coefficient of zero. They don’t affect the result, but we’ll still count them when we’re reporting the number of terms used to get the current approximation (see below).</p>
+<figure>
+<img src="subst-sin.png" alt="Figure: Taylor series for sin()" /><figcaption>Figure: Taylor series for sin()</figcaption>
+</figure>
+<p>To compute the Taylor series for cosine, you can think about the value of cosine at zero and what the derivatives of cos() evaluate to. You’ll come up with a series that’s similar to the one above, but with zero, one and negative one coefficients on different terms.</p>
+<h2 id="approximating-tangent">Approximating Tangent</h2>
+<p>The value of tan( x ) should be equal to sin( x ) / cos( x ). So, whenever we update the approximation for sine or cosine, we can compute a new, more accurate approximation for tangent.</p>
+<h2 id="table-output">Table Output</h2>
+<p>As shown above, the program’s output table has four columns, with a header at the top. Columns are separated by a vertical bar, with a space on either side of every bar. The first column is an integer, printed in a 5-column field. The rest of the values are all real numbers, printed in an 11-character field and rounded to 7 fractional digits. Each row of the table gives an approximation of the sine, cosine and tangent for the input angle based on the Taylor series.</p>
+<p>The first column reports the number of terms used in the Taylor series approximation. Each line of the table uses an additional term, to give us successively more accurate approximations. For terms, we’ll count every term in the taylor series, even the ones with coefficients of zero. So, for example, a Taylor series with just one term would look like:</p>
+<p><img src="one-term.png" /></p>
+<p>A series with four terms would look like:</p>
+<p><img src="four-terms.png" /></p>
+<h2 id="accuracy-threshold">Accuracy Threshold</h2>
+<p>The <code>trig.c</code> program should print out lines of the table until it gets values for sine and cosine that appear to be accurate enough. It will check this by comparing the new values for sine and cosine with the previous values. If each of these differ by no more than 0.000001 (that’s <var>10<sup>-6</sup></var>) from their previous values, then the program can stop after the current row.</p>
+<p>In the example output above, the last two values of sine differ by about 0.0000003 (that’s 3 * <var>10<sup>-7</sup></var>) and the last two estimates for cosine differ by zero, so the program stopped after 14 rows.</p>
+<h2 id="design-and-implementation-1">Design and Implementation</h2>
+<p>The starter contains a partial implementation for the <a href="trig.c">trig.c</a> program. You get to fill in the functions and create meaningful named constants to make the program easy to understand and modify. You’ll define and use the following five functions. You can have more if you want.</p>
+<ul>
+<li><p><code>double getAngle()</code><br />
+This function reads the angle input from the user and returns it. It should check to make sure the user enters a valid real number for the input and that the value is in the right range. If not, it should print the “Invalid input” error message and exit the program unsuccessfully.</p></li>
+<li><p><code>double difference( double a, double b )</code><br />
+This function returns the positive difference between a and b. It is used to tell when the current estimate of sine and cosine is accurate enough.</p></li>
+<li><p><code>void tableHeader()</code><br />
+Print the two header lines at the top of the table.</p></li>
+<li><p><code>void tableRow( int terms, double s, double c, double t )</code><br />
+Print a row of the table, reporting the number of terms used for the Taylor series approximation (terms), the current value of sine (s), cosine (c) and tangent (t).</p></li>
+<li><p><code>int main()</code><br />
+This is the starting point for running your program. It will use the other four functions to read user input and to help write out the output table.</p></li>
+</ul>
+<p>Be sure to fill in the block comments for the source file and the bodies of the functions you get to write. For preprocessor constants you define, be sure to give a short Javadoc-style comment that says what they’re for.</p>
+<h2 id="testing-1">Testing</h2>
+<p>You should be able to compile your program using the following gcc command:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1">$ <span class="fu">gcc</span> -Wall -std=c99 trig.c -o trig</a></code></pre></div>
+<p>This program is easy to run with input entered by the user. While you’re developing and debugging, you may just want to type in an input value yourself and watch how the program behaves. Once you think it’s running correctly, you can start comparing the output against expected output for our provided test cases. You can use commands like the following. Here, we’re running the program on test input 1 for the trig program and sending its output to a file named <code>output.txt</code>. Immediately after it finishes, we check the exit status. For test input 1, it should exit successfully, and it does here. Then, we compare the output with the expected output to make sure there are no differences.</p>
+<pre><code>$ ./trig &lt; input-trig-1.txt &gt;| output.txt
+$ echo $?
+0
+$ diff output.txt expected-trig-1.txt</code></pre>
+<p>For the trig program, a couple of the tests are invalid inputs. For these, the program isn’t expected to exit successfully, and it should print an error message. Below, we’re showing how to test against one of these invalid test cases. First, we run the program with test input 4 and send its output to a file named <code>output.txt</code>. After that, we check the exit status. For this test, it should exit with a status of 1, and it does. Then, we check if the program’s output (an error message) matches the expected output.</p>
+<pre><code>$ ./trig &lt; input-trig-4.txt &gt;| output.txt
+$ echo $?
+1
+$ diff output.txt expected-trig-4.txt</code></pre>
+<p>We’re providing five test cases to try your program with, each with an input file and an expected output file. They provide different values for the input angle, including two with invalid user input.</p>
+<ol type="1">
+<li><p>This test uses an input angle of 1.0</p></li>
+<li><p>This test uses an input angle of 3.1415. This is a valid angle, but it will require more terms to converge to an estimate that’s accurate enough.</p></li>
+<li><p>This test uses an input angle of -0.5. This test should converge more quickly.</p></li>
+<li><p>This test gives an invalid input. It’s a legal real number but it’s out of range for the program.</p></li>
+<li><p>This test gives an invalid input. It’s not even a valid real number input.</p></li>
+</ol>
+<h2 id="trig.c-grading">trig.c Grading</h2>
+<p>For this part of the assignment, you’ll be submitting your modified source file, <code>trig.c</code> to the Project 1 assignment in Moodle. We’ll grade it using the same criteria as the <code>textbox.c</code> program:</p>
+<ul>
+<li>Compiling cleanly: <strong>5 points</strong></li>
+<li>Producing the right output and exit status during execution: <strong>15 points</strong></li>
+<li>Following the style guidelines: <strong>5 points</strong><br />
+commenting, consistent indentation, curly bracket placement, magic numbers, etc.</li>
+<li>Following the design <strong>Up to 20 percent deduction</strong><br />
+Implementing and using the expected functions, no global variables.</li>
+<li>Late submission <strong>20 percent deduction</strong></li>
+</ul>
+<h1 id="notes-on-completing-the-assignment">Notes on Completing the Assignment</h1>
+<p>Of course, before you submit, you’ll want to be sure both of your programs are consistent with the CSC 230 <a href="https://www.csc2.ncsu.edu/courses/csc230/coding_style.html">Style Guidelines</a>. Also, make sure they compile cleanly (no errors or warnings) on a common platform machine using the required compiler options.</p>
+<p>There is a 24 hour window for late submissions. You’ll be permitted to submit your assignment up to 24 hours past the due date, but it will cost you a <em>20 percent</em> deduction if you submit your assignment late.</p>
+<h1 id="common-problems">Common Problems</h1>
+<ul>
+<li><p>While developing, if a program enters an infinite loop, use <code>Ctrl+C</code> to stop it.</p></li>
+<li><p>Make sure you submit source files (ending in .c), not your executable programs.</p></li>
+<li><p>Make sure you’ve submitted all of your files in the Moodle assignment for Project 1. After submitting, you can go back and check to make sure your files are all there.</p></li>
+<li><p>Contact the teaching staff if you run into a problem submitting your work. Or, visit Piazza and see if someone else has run into the same kind of problem.</p></li>
+</ul>
+<p><a name="outcomes"></a></p>
+<h1 id="learning-outcomes">Learning Outcomes</h1>
+<p>The syllabus lists a number of learning outcomes for this course. This assignment is intended to support several of theses:</p>
+<ul>
+<li><p>Write small to medium C programs having several separately-compiled modules</p></li>
+<li><p>Explain what happens to a program during preprocessing, lexical analysis, parsing, code generation, code optimization, linking, and execution, and identify errors that occur during each phase. In particular, they will be able to describe the differences in this process between C and Java.</p></li>
+<li><p>Correctly identify error messages and warnings from the preprocessor, compiler, and linker, and avoid them.</p></li>
+<li><p>Find and eliminate runtime errors using a combination of logic, language understanding, trace printout, and gdb or a similar command-line debugger.</p></li>
+<li><p>Interpret and explain data types, conversions between data types, and the possibility of overflow and underflow</p></li>
+<li><p>Explain, <em>inspect</em>, and implement <em>programs using structures such as enumerated types, unions, and constants and arithmetic, logical, relational, assignment, and bitwise operators.</em></p></li>
+<li><p>Trace and reason about variables and their scope in a single function, across multiple functions, and across multiple modules.</p></li>
+<li><p>Write, debug, and modify programs using library utilities, including, but not limited to assert, the math library, the string library, random number generation, variable number of parameters, standard I/O, and file I/O</p></li>
+<li><p>Use simple command-line tools to design, document, debug, and maintain their programs.</p></li>
+<li><p>Distinguish key elements of the syntax (what’s legal), semantics (what does it do), and pragmatics (how is it used) of a programming language.</p></li>
+</ul>
+</body>
+</html>
