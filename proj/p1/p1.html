@@ -78,7 +78,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </head>
 <body>
 <h1 id="csc230-project-1">CSC230 Project 1</h1>
-<p>This is your first, easy project. The others will be larger and more interesting. This one will let you get started writing, formatting, compiling, running and testing simple C programs. This requires that you familiarize yourself with the <a href="https://www.csc2.ncsu.edu/courses/csc230/CommonPlatform.pdf">Common Platform</a> and our <a href="https://www.csc2.ncsu.edu/courses/csc230/coding_style.html">Coding Style Guidelines</a>. A full list of the relevant <a href="#outcomes">Learning Outcomes</a> is included at the end of this page.</p>
+<p>This is your first, easy project. The others will be larger and more interesting. This one will let you get started writing, formatting, compiling, running and testing simple C programs. This requires that you familiarize yourself with the <a href="https://ncsu-sturgill.github.io/csc230/CommonPlatform.pdf">Common Platform</a> and our <a href="https://ncsu-sturgill.github.io/csc230/coding_style.html">Coding Style Guidelines</a>. A full list of the relevant <a href="#outcomes">Learning Outcomes</a> is included at the end of this page.</p>
 <p>This project is to be done individually. You should be able to solve these problems using the material up to the end of the Lecture 2 slides. Please don’t go find other resources for implementing your solution. Solving these problems with material from just the first two lectures should let you start on your code early, and it will give you a chance to practice using basic C features for things like I/O.</p>
 <h2 id="getting-started">Getting Started</h2>
 <p>There is a starter file for this project, <a href="starter1.tgz">starter1.tgz</a>. This file is a compressed tar archive containing several files you’ll need. You’ll need to unpack the files inside to get started. There are a couple of ways you can do this.</p>
@@ -89,9 +89,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Or, if you’re already logged in on a common platform system, you can download the starter using curl instead of a web browser. Make a directory where you’d like to work on the project, and <strong>cd</strong> to that directory. Then, you can download and unpack the starter right in that directory. The following commands should do the job:</li>
 </ul>
-<pre><code>$ curl -O https://www.csc2.ncsu.edu/courses/csc230/proj/p1/starter1.tgz
+<pre><code>$ curl -O https://ncsu-sturgill.github.io/csc230/proj/p1/starter1.tgz
 $ tar xzvf starter1.tgz</code></pre>
-<p>In general, when we grade your programs, we expect them to behave exactly as described in the assignment. This includes producing the right output with the right spacing and line termination. The project 1 starter includes some input files and expected output files to help you make sure your programs are behaving correctly. As described below, you can capture your program’s output in a file and then use the <code>diff</code> command to compare the output you got with the output we were expecting you to get. If <code>diff</code> sees any differences, even in spacing or line termination, it will tell you where they are. There’s a little guide linked from the course home page explaining <a href="https://www.csc2.ncsu.edu/courses/csc230/guide/diff.pdf">how to use diff</a> and how to read its output.</p>
+<p>In general, when we grade your programs, we expect them to behave exactly as described in the assignment. This includes producing the right output with the right spacing and line termination. The project 1 starter includes some input files and expected output files to help you make sure your programs are behaving correctly. As described below, you can capture your program’s output in a file and then use the <code>diff</code> command to compare the output you got with the output we were expecting you to get. If <code>diff</code> sees any differences, even in spacing or line termination, it will tell you where they are. There’s a little guide linked from the course home page explaining <a href="https://ncsu-sturgill.github.io/csc230/guide/diff.pdf">how to use diff</a> and how to read its output.</p>
 <h1 id="part-0-registering-with-ncsu-github-a-very-easy-10-pts">Part 0 : Registering with NCSU GitHub (a very easy 10 pts)</h1>
 <p>Using a web browser, visit <a href="http://github.ncsu.edu">github.ncsu.edu</a> and log in with your unity credentials. If you’re not able to log in on this website, inform the instructor immediately (i.e., <strong>before</strong> the deadline).</p>
 <p>We’ll be using NCSU’s GitHub for submitting future projects. This is an opt-in system, which means that the initial login is required so that you are recognized as a user. If you are not in the system, we won’t be able to create the repository that you will be using for the rest of the course, and you won’t be able to complete future projects.</p>
@@ -99,7 +99,7 @@ $ tar xzvf starter1.tgz</code></pre>
 <h2 id="grading">Grading</h2>
 <p>You’ll get your 10 points just for logging in on the NCSU github. This is a really easy 10 points to earn. There is nothing to turn in for this part of the assignment. If you run into trouble logging in, be sure to let us know before the deadline, so we can try to help you out.</p>
 <h1 id="part-1-correcting-style-25-pts">Part 1 : Correcting Style (25 pts)</h1>
-<p>The program, <a href="style.c">style.c</a> is an example of some bad style. It has everything, bad or missing comments, bad curly bracket placement, some hard tabs for indentation, some incorrect line termination, no line termination at the end of the last line, maybe more problems. Edit this program to make it consistent with the <a href="https://www.csc2.ncsu.edu/courses/csc230/coding_style.html">class style guidelines</a>.</p>
+<p>The program, <a href="style.c">style.c</a> is an example of some bad style. It has everything, bad or missing comments, bad curly bracket placement, some hard tabs for indentation, some incorrect line termination, no line termination at the end of the last line, maybe more problems. Edit this program to make it consistent with the <a href="https://ncsu-sturgill.github.io/csc230/coding_style.html">class style guidelines</a>.</p>
 <p>The style guide requires particular types of block comments before each function and at the top of each file. After reformatting the program, add these comments. You may need to read the code for the various functions so your comments can summarize what they each do. You’ll also find some opportunities to make sure the program uses meaningfully-named constants instead of some magic numbers.</p>
 <h2 id="editing-style.c">Editing style.c</h2>
 <p>To edit the <code>style.c</code> source file, you can use a text editor or the IDE of your choice. Most of the style errors will be easy to see by just looking at the source file and consulting the class style guide document. Some style errors are in the whitespace of the source file (spaces or line termination). These may be more difficult to see in your editor. To check these, you may want to use the <code>hexdump</code> program. If you run it like the following, it will show the sequence of characters in the source file, in hexadecimal on the left and as symbols on the right. This will let you see exactly what caracters are in your source file by looking at the sequence of hexadecimal codes on the left.</p>
@@ -142,9 +142,9 @@ Words: 103</code></pre>
 <h2 id="style.c-grading">style.c Grading</h2>
 <p>For this part of the assignment, you’ll be submitting your modified source file, <code>style.c</code>, to the Project 1 assignment in Moodle. Your submission will be graded according to the following:</p>
 <ul>
-<li>Adding the required block comments: 10 points</li>
-<li>Correcting source code formatting and other style problems: 10 points</li>
-<li>Program still compiles cleanly and produces the right output: 5 points</li>
+<li>Adding the required block comments: <strong>10 points</strong></li>
+<li>Correcting source code formatting and other style problems: <strong>10 points</strong></li>
+<li>Program still compiles cleanly and produces the right output: <strong>5 points</strong></li>
 </ul>
 <h1 id="part-2-text-box-25-pts">Part 2 : Text Box (25 pts)</h1>
 <p>Have a look at the <a href="textbox.c">textbox.c</a> source file. This program is intended to give you a chance to try reading input character-by-character using getchar() and printing characters using putchar(). The overall skeleton of this program is done for you, but you’ll need to fill in the bodies of the functions to get it working.</p>
@@ -160,7 +160,7 @@ Words: 103</code></pre>
 <li><p><code>void lineOfChars( char ch, int count )</code><br />
 This function prints out multiple copies of the given character, followed by a newline. The number of copies is determined by the count parameter. Use this function to help print the top and bottom border around the text.</p></li>
 <li><p><code>bool paddedLine()</code><br />
-This function will read and print <em>a single line of text</em> inside the border. Your main function will call this over and over, once for each line of input. The function returns true or false to tell the caller if there was another input line to process. If it successfully reads (and prints) an input line, it should return true. Otherwise (i.e., it hits EOF before it can read any characters), it should return false to tell the caller that there’s no more text to put in the box. This function will read the text from standard input and print to standard output. If the line of text isn’t long enough, it will add extra spaces at the end to make the box rectangular. If a line of text is too long, it will discard extra characters on the line (i.e., up to the end-of-line) to keep the box rectangular.</p>
+This function will read and print <em>a single line of text</em> inside the border. Your main function will call this over and over, once for each line of input. The function returns true or false to tell the caller if there was another input line to process. If it successfully reads (and prints) an input line, it should return true. Otherwise (i.e., it hits EOF before it can read any characters), it should return false to tell the caller that there’s no more text to put in the box. This function will read the text from standard input and print to standard output. If the line of text isn’t long enough, it will add extra spaces at the end to make the box rectangular. If a line of text is too long, it will read and discard extra characters on the line (i.e., up to the end-of-line) to keep the box rectangular.</p>
 <p>We don’t know how to store strings yet, so this function will need to work by reading in and handling just one character at a time. You can do this by keeping up with how many characters you’ve read in for the current line and deciding what to do with each character as you read it. Remember, each time the paddedLine() function is called, it should read in a whole line of characters, but it may not be able to print all those characters and it may have to print some extra characters. If the line is shorter than the width of the box, it will need to print some extra characters at the end. If the line is longer than the width of the box, the function will still need to read the whole line; it just won’t print any of the characters out past the end of the box.</p>
 <p>This function is probably the most fun/tricky part of this assignment. The test cases provided with the starter will help you try out your function’s behavior and make sure it’s doing the right thing in all situations. When printing out a line in the middle part of the text box, you can either make main() responsible for printing the border characters at the start and the end, or you can make this function handle it, whichever seems easier to you.</p></li>
 <li><p><code>int main()</code><br />
@@ -172,7 +172,7 @@ This is, of course, the starting point of your program. It will use the other tw
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1">$ <span class="fu">gcc</span> -Wall -std=c99 textbox.c -o textbox</a></code></pre></div>
 <p>You can run the program and type input to it yourself, but the output will look a lot better if you use redirection to read input from a file. If you just want to see what your program’s output looks like, you can run it like:</p>
 <pre><code>$ ./textbox &lt; input-text-1.txt</code></pre>
-<p>If you really want to make sure your output is right, you can capture the output in file and compare it against one of our expected output examples. Try running your program as follows to tell it to read input from our first test case (input-text-1.txt) and send output to a file named <code>output.txt</code>. Then, check your programs exit status to make sure it reported successful execution, and use diff to help make sure it produced output that matches what we were expecting.</p>
+<p>If you really want to make sure your output is right, you can capture the output in file and compare it against one of our expected output examples. The <code>&gt;|</code> syntax below tells the shell to send the program’s output to a file rather than letting it go to the terminal window. Even if the output file already exists, this syntax tells the shell to overwrite it. Try running your program as follows to tell it to read input from our first test case (input-text-1.txt) and send output to a file named <code>output.txt</code>. Then, check your programs exit status to make sure it reported successful execution, and use diff to help make sure it produced output that matches what we were expecting.</p>
 <pre><code>$ ./textbox &lt; input-text-1.txt &gt;| output.txt
 $ echo $?
 0
@@ -192,8 +192,8 @@ $ diff output.txt expected-text-1.txt</code></pre>
 <li>Producing the right output during execution: <strong>15 points</strong></li>
 <li>Following the style guidelines: <strong>5 points</strong><br />
 This includes commenting, consistent indentation (you can change the indentation from the starter code, if you want), curly bracket placement, etc.</li>
-<li>Following the design <strong>Up to 20 percent deduction</strong><br />
-This includes implementing and using the functions described above and preprocessor constants, no global variables.</li>
+<li>Not following the design: <strong>Up to 20 percent deduction</strong><br />
+This includes implementing and using the functions described above and using the preprocessor constants defined in the starter.</li>
 <li>Late submission <strong>20 percent deduction</strong></li>
 </ul>
 <h1 id="part-3-trigonometric-function-calculation">Part 3 : Trigonometric Function Calculation</h1>
@@ -380,7 +380,7 @@ Implementing and using the expected functions, no global variables.</li>
 <li>Late submission <strong>20 percent deduction</strong></li>
 </ul>
 <h1 id="notes-on-completing-the-assignment">Notes on Completing the Assignment</h1>
-<p>Of course, before you submit, you’ll want to be sure both of your programs are consistent with the CSC 230 <a href="https://www.csc2.ncsu.edu/courses/csc230/coding_style.html">Style Guidelines</a>. Also, make sure they compile cleanly (no errors or warnings) on a common platform machine using the required compiler options.</p>
+<p>Of course, before you submit, you’ll want to be sure both of your programs are consistent with the CSC 230 <a href="https://ncsu-sturgill.github.io/csc230/coding_style.html">Style Guidelines</a>. Also, make sure they compile cleanly (no errors or warnings) on a common platform machine using the required compiler options.</p>
 <p>There is a 24 hour window for late submissions. You’ll be permitted to submit your assignment up to 24 hours past the due date, but it will cost you a <em>20 percent</em> deduction if you submit your assignment late.</p>
 <h1 id="common-problems">Common Problems</h1>
 <ul>
